@@ -3,29 +3,27 @@ import {
 	View,
 	Text,
 	TouchableOpacity,
-	FlatListProps,
 	Dimensions,
 } from "react-native";
 
 type Cryptocurrency = "BTC" | "ETH" | "POLYGON";
 
-type Transaction = {
+export type Transaction = {
 	coin: string;
 	amount: number;
 	spread: number;
 	symbol: Cryptocurrency;
 };
 
-interface TransactionListProps extends FlatListProps<Transaction> {
+interface TransactionListProps {
 	transactions: Transaction[];
-	onPress: (transaction: Transaction) => void;
 }
 
-const TransactionList = ({ transactions, onPress }: TransactionListProps) => {
+const TransactionList = ({ transactions }: TransactionListProps) => {
 	return (
 		<FlatList
 			data={transactions}
-			style={{ marginTop: 25 }}
+      style={{marginTop: 25}}
 			renderItem={({ item }) => {
 				return (
 					<TouchableOpacity
@@ -39,14 +37,14 @@ const TransactionList = ({ transactions, onPress }: TransactionListProps) => {
 							paddingVertical: 10,
 							justifyContent: "space-between",
 						}}
-						onPress={onPress}
+						onPress={() => console.log('Item pressed: ', item.coin)}
 					>
 						<View>
 							<Text>{item.coin}</Text>
 							<Text>{item.symbol}</Text>
 						</View>
 						<View>
-							<Text>{item.spread}%</Text>
+							<Text>{item.spread}</Text>
 							<Text>${item.amount}</Text>
 						</View>
 					</TouchableOpacity>

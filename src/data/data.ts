@@ -1,4 +1,6 @@
-export const transactionList = [
+import { Transaction } from "../components/Transactions";
+
+export const transactionList: Transaction[] = [
 	{
 		coin: "Bitcoin",
 		amount: 224,
