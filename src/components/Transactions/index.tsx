@@ -27,7 +27,6 @@ const TransactionList = ({ transactions, onPress }: TransactionListProps) => {
 			data={transactions}
 			style={{ marginTop: 25 }}
 			renderItem={({ item }) => {
-				console.log("item:", item.coin);
 				return (
 					<TouchableOpacity
 						style={{
